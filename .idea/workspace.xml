@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e33e658e-d489-4303-8701-94a487ceb2e0" name="Default" comment="" />
+    <list default="true" id="e33e658e-d489-4303-8701-94a487ceb2e0" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/skymind/round2/cnn/CaltechImageClassifier.java" afterPath="$PROJECT_DIR$/src/main/java/skymind/round2/cnn/CaltechImageClassifier.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/skymind/round2/cnn/ZooModelTransferLearning.java" afterPath="$PROJECT_DIR$/src/main/java/skymind/round2/cnn/ZooModelTransferLearning.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,17 +21,17 @@
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-309">
-              <caret line="354" column="31" lean-forward="true" selection-start-line="354" selection-start-column="31" selection-end-line="354" selection-end-column="31" />
+              <caret line="354" column="31" lean-forward="false" selection-start-line="354" selection-start-column="31" selection-end-line="354" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CaltechImageClassifier.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CaltechImageClassifier.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/skymind/round2/cnn/CaltechImageClassifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1728">
-              <caret line="147" column="0" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+            <state relative-caret-position="167">
+              <caret line="94" column="32" lean-forward="true" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -35,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ZooModelTransferLearning.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ZooModelTransferLearning.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/skymind/round2/cnn/ZooModelTransferLearning.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="170" column="32" lean-forward="true" selection-start-line="170" selection-start-column="32" selection-end-line="170" selection-end-column="32" />
+            <state relative-caret-position="201">
+              <caret line="90" column="39" lean-forward="false" selection-start-line="90" selection-start-column="39" selection-end-line="90" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -67,8 +71,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/skymind/round2/cnn/ZooModelTransferLearning.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/skymind/round2/cnn/ZooModelTransferLearning.java" />
         <option value="$PROJECT_DIR$/src/main/java/skymind/round2/cnn/CaltechImageClassifier.java" />
       </list>
     </option>
@@ -443,25 +447,25 @@
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-309">
-          <caret line="354" column="31" lean-forward="true" selection-start-line="354" selection-start-column="31" selection-end-line="354" selection-end-column="31" />
+          <caret line="354" column="31" lean-forward="false" selection-start-line="354" selection-start-column="31" selection-end-line="354" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/skymind/round2/cnn/ZooModelTransferLearning.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/skymind/round2/cnn/CaltechImageClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="170" column="32" lean-forward="true" selection-start-line="170" selection-start-column="32" selection-end-line="170" selection-end-column="32" />
+        <state relative-caret-position="167">
+          <caret line="94" column="32" lean-forward="true" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/skymind/round2/cnn/CaltechImageClassifier.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/skymind/round2/cnn/ZooModelTransferLearning.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1728">
-          <caret line="147" column="0" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+        <state relative-caret-position="201">
+          <caret line="90" column="39" lean-forward="false" selection-start-line="90" selection-start-column="39" selection-end-line="90" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

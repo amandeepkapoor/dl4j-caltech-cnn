@@ -21,6 +21,7 @@ import org.deeplearning4j.nn.conf.inputs.InputType;
 import org.deeplearning4j.nn.conf.layers.*;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.weights.WeightInit;
+import org.deeplearning4j.util.ModelSerializer;
 import org.nd4j.linalg.activations.Activation;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.DataSet;
@@ -33,10 +34,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.deeplearning4j.optimize.listeners.ScoreIterationListener;
 
+/*
+This program is an Image Classifier, capable of classifying 101 categories of the images. This is implemented using the
+concept of convolution neural nets. The Dataset is hosted at http://www.vision.caltech.edu/Image_Datasets/Caltech101/.
+Please refer the read me text on the link https://github.com/amandeepkapoor/dl4j-caltech-cnn to know more about the
+implementation. Also I have added few useful comments, would be helpful in understanding the flow of the code.
+*/
 
 public class CaltechImageClassifier {
 
-
+    //Defining the Maven Directory path as the sub path so that it can be accessible everywhere. It contains the downloaded data
     public static final String File_Sub_Path = "src\\main\\resources\\101_ObjectCategories";
 
 
@@ -45,20 +52,27 @@ public class CaltechImageClassifier {
     public static void main(String[] args) throws Exception {
         int height = 200;
         int width = 300;
-        int channels = 3;
+        int channels = 3; //As the image is in RGB so Depth defines the intensity across them
         int seed = 123;
         Random randNumGen = new Random(seed);
         int batchSize = 50;
         int outputNum = 101;
         int epoch = 10;
+        //Extracting the file paths from the given directory
         File trainData = new File(System.getProperty("user.dir"),File_Sub_Path);
         FileSplit train = new FileSplit(trainData, NativeImageLoader.ALLOWED_FORMATS, randNumGen);
+        //Attaching the file labels from the name of the file where the images are stored
         ParentPathLabelGenerator labelMaker = new ParentPathLabelGenerator();
+        //Below functionality make sure that the returned path as equally divided between the labels.
+        // It is a necesity for better learning
         BalancedPathFilter pathFilter = new BalancedPathFilter(randNumGen, labelMaker,0, outputNum, batchSize);
-        InputSplit[] filesInDirSplit = train.sample(pathFilter, 80, 20);
+        InputSplit[] filesInDirSplit = train.sample(pathFilter, 80, 20); //Splitting the test and train data
         InputSplit trainData1 = filesInDirSplit[0];
         InputSplit testData = filesInDirSplit[1];
 
+
+        /*In order to increase the data size and achieve better learning. Following tranformation operation are applied
+          on the existing dataset.*/
         ImageTransform transform1 = new FlipImageTransform(randNumGen);
         ImageTransform transform2 = new FlipImageTransform(new Random(seed));
         ImageTransform warptranform = new WarpImageTransform(randNumGen,42);
@@ -68,9 +82,15 @@ public class CaltechImageClassifier {
         ImageRecordReader recordReader = new ImageRecordReader(height, width, channels, labelMaker);
         recordReader.initialize(trainData1);
 
+
+        //To lower the scale from 0-255 to 0-1 while maintaining the correlation
         DataNormalization scaler = new ImagePreProcessingScaler(0, 1);
         DataSetIterator dataIter;
 
+        /*This is our model in the shape [conv -> normalization -> relu]*2 -> Pool -> Conv -> normalization -> relu -> pool
+        -> drop out (the features which are not significant) -> Fully connected layer (it will flatten the data and will
+        combine with all the neurons -> Softmax(Classifier on 101 classes - Kind of Logistic Regression at the end)
+         */
         MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder().trainingWorkspaceMode(WorkspaceMode.SEPARATE)
                 .inferenceWorkspaceMode(WorkspaceMode.SINGLE)
                 .seed(seed)
@@ -111,10 +131,10 @@ public class CaltechImageClassifier {
         MultiLayerNetwork model = new MultiLayerNetwork(conf);
         model.init();
 
-        model.setListeners(new ScoreIterationListener(10));
+        model.setListeners(new ScoreIterationListener(10)); //To see our model's progress
 
         log.info("*****TRAIN MODEL********");
-
+        //Training our data on the tranformed images.
         for (ImageTransform transform: tranforms) {
 
             System.out.println("Training on"+transform.getClass().toString());
@@ -127,6 +147,7 @@ public class CaltechImageClassifier {
             }
         }
         recordReader.reset();
+        //Training our data on the original images
         recordReader.initialize(trainData1);
         dataIter = new RecordReaderDataSetIterator(recordReader, batchSize, 1, outputNum);
         scaler.fit(dataIter);
@@ -153,8 +174,11 @@ public class CaltechImageClassifier {
 
         }
 
-        log.info(eval.stats());
+        log.info(eval.stats()); //Printing the accuracy and precision of the model.
 
+        //Below command is to save our model at the local directory excluding the weights.
+        File locationToSave = new File(System.getProperty("user.dir"),"caltechimage.zip");
+        ModelSerializer.writeModel(model,locationToSave,false);
     }
 
 }
