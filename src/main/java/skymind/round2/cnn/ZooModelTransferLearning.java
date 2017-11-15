@@ -143,7 +143,7 @@ public class ZooModelTransferLearning {
             iter++;
 
         }
-        File locationToSave = new File(System.getProperty("user.dir"),"caltechimage.zip");
+        File locationToSave = new File(System.getProperty("user.dir"),"zoomodel.zip");
         ModelSerializer.writeModel(vgg16Transfer,locationToSave,false);
 
 
