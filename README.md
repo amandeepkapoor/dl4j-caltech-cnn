@@ -17,9 +17,18 @@ These are:
 
 			a.	The version which is used by me in this program is “Modifying only the last layer keeping other frozen”.
 
-			b.	This model very quickly converges with minimal training. After few (30) iterations  of individual datasets. The accuracy was increased from .008 to .7 which is 70 percent. 
+			b.	This model very quickly converges with minimal training. After few iterations  of individual datasets. The accuracy was increased from .008 towards .7.
+			c. 	The final outcome was (no. of epoch was 1) :-							
+				==========================Scores========================================
+ 				# of classes:    101
+ 				Accuracy:        0.6869
+ 				Precision:       0.8305	(9 classes excluded from average)
+ 				Recall:          0.6912
+ 				F1 Score:        0.7344	(9 classes excluded from average)
+				Precision, recall & F1: macro-averaged (equally weighted avg. of 101 classes)
+				========================================================================
 
-			c.	This learning is very efficient. But need to take 1 caution before implementing this model that configuring the Heap Size, as the number of parameter is very high in this model. Will explain below.
+			c.	This learning is very efficient. But need to take 1 caution i.e. before implementing this model that configuring the Heap Size, as the number of parameter is very high in this model. Will explain below.
 
 How to Install:
 
@@ -45,11 +54,11 @@ d.	Once the above commands are executed, a Jar file would be created in the targ
 
 Heap Size Allocation:
 
-1.	If you have Intelli J installed then it is fairly quick. Go to the Run Configuration -> Set the VM Option for the class your executing. Commands are –Xms<size> and –Xmx<size>
+1.	If you have Intelli J installed then it is fairly quick. Go to the Run Configuration -> Set the VM Option for the class you are executing. Commands are –Xms<size> and –Xmx<size>
 
 Additional Useful Link:
 
-1.	 Numpy memory allocation - http://nd4j.org/userguide#inmemory 
+1.	Numpy memory allocation - http://nd4j.org/userguide#inmemory 
 
 2.	Zoo Model Setting - https://deeplearning4j.org/build_vgg_webapp 
 
@@ -58,6 +67,8 @@ Additional Useful Link:
 		a.	https://deeplearning4j.org/convolutionalnets 
 
 		b.	https://www.mathworks.com/help/nnet/ug/layers-of-a-convolutional-neural-network.html 
+		
+4.	DL4J Examples - https://github.com/deeplearning4j/dl4j-examples/tree/master/dl4j-examples/src/main/java/org/deeplearning4j/examples/transferlearning/vgg16
 
 
 
